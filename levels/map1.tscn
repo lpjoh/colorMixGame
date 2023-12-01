@@ -1,0 +1,87 @@
+[gd_scene load_steps=6 format=2]
+
+[ext_resource path="res://objects/playerMap.tscn" type="PackedScene" id=1]
+[ext_resource path="res://sprites/backs/map1.png" type="Texture" id=2]
+[ext_resource path="res://sprites/mapShiftButton.png" type="Texture" id=3]
+
+[sub_resource type="Animation" id=1]
+resource_name = "zoomIn"
+length = 0.5
+tracks/0/type = "value"
+tracks/0/path = NodePath("playerMap/Camera2D:zoom")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/keys = {
+"times": PoolRealArray( 0, 0.5 ),
+"transitions": PoolRealArray( 1, 1 ),
+"update": 0,
+"values": [ Vector2( 1, 1 ), Vector2( 0, 0 ) ]
+}
+
+[sub_resource type="Animation" id=2]
+resource_name = "zoomOut"
+length = 0.5
+tracks/0/type = "value"
+tracks/0/path = NodePath("playerMap/Camera2D:zoom")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/keys = {
+"times": PoolRealArray( 0, 0.5 ),
+"transitions": PoolRealArray( 1, 1 ),
+"update": 0,
+"values": [ Vector2( 0, 0 ), Vector2( 1, 1 ) ]
+}
+
+[node name="Node2D" type="Node2D"]
+
+[node name="TextureRect" type="TextureRect" parent="."]
+margin_right = 256.0
+margin_bottom = 180.0
+rect_scale = Vector2( 2, 2 )
+texture = ExtResource( 2 )
+__meta__ = {
+"_edit_use_anchors_": false
+}
+
+[node name="playerMap" parent="." instance=ExtResource( 1 )]
+position = Vector2( 179, 232 )
+
+[node name="Camera2D" type="Camera2D" parent="playerMap"]
+current = true
+zoom = Vector2( 0, 0 )
+
+[node name="transAnim" type="AnimationPlayer" parent="."]
+autoplay = "zoomOut"
+anims/zoomIn = SubResource( 1 )
+anims/zoomOut = SubResource( 2 )
+
+[node name="CanvasLayer" type="CanvasLayer" parent="."]
+
+[node name="moveButtons" type="Node2D" parent="CanvasLayer"]
+modulate = Color( 1, 1, 1, 0.698039 )
+
+[node name="rightButton" type="TextureButton" parent="CanvasLayer/moveButtons"]
+margin_left = 104.0
+margin_top = 96.0
+margin_right = 136.0
+margin_bottom = 160.0
+texture_normal = ExtResource( 3 )
+__meta__ = {
+"_edit_use_anchors_": false
+}
+
+[node name="leftButton" type="TextureButton" parent="CanvasLayer/moveButtons"]
+margin_left = 40.0
+margin_top = 96.0
+margin_right = 72.0
+margin_bottom = 160.0
+rect_scale = Vector2( -1, 1 )
+texture_normal = ExtResource( 3 )
+expand = true
+__meta__ = {
+"_edit_use_anchors_": false
+}

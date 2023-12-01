@@ -1,0 +1,319 @@
+[gd_scene load_steps=18 format=2]
+
+[ext_resource path="res://sprites/crossfrogIcon.png" type="Texture" id=1]
+[ext_resource path="res://sprites/title.png" type="Texture" id=2]
+[ext_resource path="res://sprites/miniFont.ttf" type="DynamicFontData" id=3]
+[ext_resource path="res://sprites/font.ttf" type="DynamicFontData" id=4]
+[ext_resource path="res://sprites/backs/whiteFrame.png" type="Texture" id=5]
+[ext_resource path="res://sprites/buttonStyleBox.tres" type="StyleBox" id=6]
+[ext_resource path="res://sprites/colorGuy.png" type="Texture" id=7]
+[ext_resource path="res://objects/transAnim.tscn" type="PackedScene" id=8]
+[ext_resource path="res://scripts/menuButtons.gd" type="Script" id=9]
+[ext_resource path="res://sprites/miniFont.tres" type="DynamicFont" id=10]
+
+[sub_resource type="CanvasItemMaterial" id=1]
+blend_mode = 1
+
+[sub_resource type="CanvasItemMaterial" id=2]
+blend_mode = 1
+
+[sub_resource type="CanvasItemMaterial" id=3]
+blend_mode = 1
+
+[sub_resource type="DynamicFont" id=4]
+size = 7
+outline_color = Color( 0, 0, 0, 1 )
+font_data = ExtResource( 4 )
+
+[sub_resource type="DynamicFont" id=5]
+size = 8
+outline_size = 1
+outline_color = Color( 0, 0, 0, 1 )
+font_data = ExtResource( 3 )
+
+[sub_resource type="Animation" id=6]
+length = 5.0
+loop = true
+tracks/0/type = "value"
+tracks/0/path = NodePath("charSpinner:rotation_degrees")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/keys = {
+"times": PoolRealArray( 0, 5 ),
+"transitions": PoolRealArray( 1, 1 ),
+"update": 0,
+"values": [ 0.0, 360.0 ]
+}
+tracks/1/type = "value"
+tracks/1/path = NodePath("charSpinner/redGuy:rotation_degrees")
+tracks/1/interp = 1
+tracks/1/loop_wrap = true
+tracks/1/imported = false
+tracks/1/enabled = true
+tracks/1/keys = {
+"times": PoolRealArray( 0, 5 ),
+"transitions": PoolRealArray( 1, 1 ),
+"update": 0,
+"values": [ 0.0, -360.0 ]
+}
+tracks/2/type = "value"
+tracks/2/path = NodePath("charSpinner/yellowGuy:rotation_degrees")
+tracks/2/interp = 1
+tracks/2/loop_wrap = true
+tracks/2/imported = false
+tracks/2/enabled = true
+tracks/2/keys = {
+"times": PoolRealArray( 0, 5 ),
+"transitions": PoolRealArray( 1, 1 ),
+"update": 0,
+"values": [ 0.0, -360.0 ]
+}
+tracks/3/type = "value"
+tracks/3/path = NodePath("charSpinner/blueGuy:rotation_degrees")
+tracks/3/interp = 1
+tracks/3/loop_wrap = true
+tracks/3/imported = false
+tracks/3/enabled = true
+tracks/3/keys = {
+"times": PoolRealArray( 0, 5 ),
+"transitions": PoolRealArray( 1, 1 ),
+"update": 0,
+"values": [ 0.0, -360.0 ]
+}
+tracks/4/type = "value"
+tracks/4/path = NodePath("charSpinner/orangeGuy:rotation_degrees")
+tracks/4/interp = 1
+tracks/4/loop_wrap = true
+tracks/4/imported = false
+tracks/4/enabled = true
+tracks/4/keys = {
+"times": PoolRealArray( 0, 5 ),
+"transitions": PoolRealArray( 1, 1 ),
+"update": 0,
+"values": [ 0.0, -360.0 ]
+}
+tracks/5/type = "value"
+tracks/5/path = NodePath("charSpinner/greenGuy:rotation_degrees")
+tracks/5/interp = 1
+tracks/5/loop_wrap = true
+tracks/5/imported = false
+tracks/5/enabled = true
+tracks/5/keys = {
+"times": PoolRealArray( 0, 5 ),
+"transitions": PoolRealArray( 1, 1 ),
+"update": 0,
+"values": [ 0.0, -360.0 ]
+}
+tracks/6/type = "value"
+tracks/6/path = NodePath("charSpinner/purpleGuy:rotation_degrees")
+tracks/6/interp = 1
+tracks/6/loop_wrap = true
+tracks/6/imported = false
+tracks/6/enabled = true
+tracks/6/keys = {
+"times": PoolRealArray( 0, 5 ),
+"transitions": PoolRealArray( 1, 1 ),
+"update": 0,
+"values": [ 0.0, -360.0 ]
+}
+tracks/7/type = "value"
+tracks/7/path = NodePath("charSpinner:scale")
+tracks/7/interp = 1
+tracks/7/loop_wrap = true
+tracks/7/imported = false
+tracks/7/enabled = true
+tracks/7/keys = {
+"times": PoolRealArray( 0, 2.5, 5 ),
+"transitions": PoolRealArray( 1, 1, 1 ),
+"update": 0,
+"values": [ Vector2( 1, 1 ), Vector2( 0.5, 0.5 ), Vector2( 1, 1 ) ]
+}
+
+[sub_resource type="Animation" id=7]
+resource_name = "zoomOut"
+tracks/0/type = "value"
+tracks/0/path = NodePath("Camera2D:zoom")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/keys = {
+"times": PoolRealArray( 0, 0.5 ),
+"transitions": PoolRealArray( 1, 1 ),
+"update": 0,
+"values": [ Vector2( 0, 0 ), Vector2( 1, 1 ) ]
+}
+
+[node name="Node2D" type="Node2D"]
+
+[node name="TextureRect" type="TextureRect" parent="."]
+margin_right = 144.0
+margin_bottom = 256.0
+texture = ExtResource( 5 )
+__meta__ = {
+"_edit_use_anchors_": false
+}
+
+[node name="charSpinner" type="Node2D" parent="."]
+position = Vector2( 72, 128 )
+rotation = 0.125664
+scale = Vector2( 0.98, 0.98 )
+
+[node name="redGuy" type="Sprite" parent="charSpinner"]
+modulate = Color( 1, 0, 0, 1 )
+material = SubResource( 1 )
+position = Vector2( 0, -50 )
+rotation = -0.125664
+texture = ExtResource( 7 )
+
+[node name="orangeGuy" type="Sprite" parent="charSpinner"]
+modulate = Color( 1, 0.498039, 0, 1 )
+material = SubResource( 1 )
+position = Vector2( 40, -24 )
+rotation = -0.125664
+texture = ExtResource( 7 )
+
+[node name="yellowGuy" type="Sprite" parent="charSpinner"]
+modulate = Color( 1, 1, 0, 1 )
+material = SubResource( 2 )
+position = Vector2( 40, 27 )
+rotation = -0.125664
+texture = ExtResource( 7 )
+
+[node name="greenGuy" type="Sprite" parent="charSpinner"]
+modulate = Color( 0, 1, 0, 1 )
+material = SubResource( 2 )
+position = Vector2( 0, 50 )
+rotation = -0.125664
+texture = ExtResource( 7 )
+
+[node name="blueGuy" type="Sprite" parent="charSpinner"]
+modulate = Color( 0, 0.498039, 1, 1 )
+material = SubResource( 3 )
+position = Vector2( -48, 27 )
+rotation = -0.125664
+texture = ExtResource( 7 )
+
+[node name="purpleGuy" type="Sprite" parent="charSpinner"]
+modulate = Color( 0.498039, 0, 1, 1 )
+material = SubResource( 1 )
+position = Vector2( -48, -23 )
+rotation = -0.125664
+texture = ExtResource( 7 )
+
+[node name="Sprite" type="Sprite" parent="."]
+position = Vector2( 72, 67 )
+texture = ExtResource( 2 )
+
+[node name="crossfrogSubtext" type="HBoxContainer" parent="."]
+margin_top = 224.0
+margin_right = 144.0
+margin_bottom = 236.0
+alignment = 1
+__meta__ = {
+"_edit_group_": true,
+"_edit_use_anchors_": false
+}
+
+[node name="Label" type="Label" parent="crossfrogSubtext"]
+margin_left = 25.0
+margin_top = 2.0
+margin_right = 77.0
+margin_bottom = 10.0
+custom_fonts/font = ExtResource( 10 )
+text = "a crossfrog"
+uppercase = true
+
+[node name="TextureRect" type="TextureRect" parent="crossfrogSubtext"]
+margin_left = 81.0
+margin_right = 93.0
+margin_bottom = 12.0
+texture = ExtResource( 1 )
+
+[node name="Label2" type="Label" parent="crossfrogSubtext"]
+margin_left = 97.0
+margin_top = 2.0
+margin_right = 118.0
+margin_bottom = 10.0
+custom_fonts/font = ExtResource( 10 )
+text = "game"
+uppercase = true
+
+[node name="menuButtons" type="VBoxContainer" parent="."]
+margin_left = 20.0
+margin_top = 111.0
+margin_right = 124.0
+margin_bottom = 208.0
+custom_constants/separation = 8
+alignment = 1
+script = ExtResource( 9 )
+__meta__ = {
+"_edit_use_anchors_": false
+}
+
+[node name="arcade" type="Button" parent="menuButtons"]
+modulate = Color( 1, 0.498039, 0.498039, 1 )
+margin_right = 104.0
+margin_bottom = 12.0
+focus_mode = 0
+custom_styles/hover = ExtResource( 6 )
+custom_styles/pressed = ExtResource( 6 )
+custom_styles/focus = ExtResource( 6 )
+custom_styles/disabled = ExtResource( 6 )
+custom_styles/normal = ExtResource( 6 )
+custom_fonts/font = SubResource( 4 )
+custom_colors/font_color = Color( 1, 1, 1, 1 )
+enabled_focus_mode = 0
+text = "arcade mode"
+
+[node name="arcadeLabel" type="Label" parent="menuButtons"]
+modulate = Color( 1, 0.498039, 0.498039, 1 )
+margin_top = 20.0
+margin_right = 104.0
+margin_bottom = 39.0
+custom_fonts/font = SubResource( 5 )
+text = "destroy stacking bubbles at a quick pace."
+autowrap = true
+uppercase = true
+
+[node name="casual" type="Button" parent="menuButtons"]
+modulate = Color( 0.501961, 0.74902, 1, 1 )
+margin_top = 47.0
+margin_right = 104.0
+margin_bottom = 59.0
+focus_mode = 0
+custom_styles/hover = ExtResource( 6 )
+custom_styles/pressed = ExtResource( 6 )
+custom_styles/focus = ExtResource( 6 )
+custom_styles/disabled = ExtResource( 6 )
+custom_styles/normal = ExtResource( 6 )
+custom_fonts/font = SubResource( 4 )
+custom_colors/font_color = Color( 1, 1, 1, 1 )
+enabled_focus_mode = 0
+text = "clear mode"
+
+[node name="casualLabel" type="Label" parent="menuButtons"]
+modulate = Color( 0.501961, 0.74902, 1, 1 )
+margin_top = 67.0
+margin_right = 104.0
+margin_bottom = 97.0
+custom_fonts/font = SubResource( 5 )
+text = "destroy a wall of bubbles at your leisure."
+autowrap = true
+uppercase = true
+
+[node name="backAnim" type="AnimationPlayer" parent="."]
+autoplay = "spin"
+anims/spin = SubResource( 6 )
+
+[node name="transAnim" parent="." instance=ExtResource( 8 )]
+anims/zoomOut = SubResource( 7 )
+
+[node name="Camera2D" type="Camera2D" parent="."]
+position = Vector2( 72, 128 )
+current = true
+[connection signal="pressed" from="menuButtons/arcade" to="menuButtons" method="_on_arcade_pressed"]
+[connection signal="pressed" from="menuButtons/casual" to="menuButtons" method="_on_casual_pressed"]
+[connection signal="animation_finished" from="transAnim" to="menuButtons" method="_on_transAnim_animation_finished"]
